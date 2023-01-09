@@ -1,4 +1,5 @@
-
+import time
+MAX = 1000000
 def binarySearch(A, x, low, high):
     if (low > high):
         return -1
@@ -21,18 +22,22 @@ def linearSearch(A, n, x):
 
 A = []
 i = 0
-while len(A) <= 100000000:
-    A.append(i)
-    i+=1
-import time
- 
 
-start = time.time()
-binarySearch(A,-1,0,len(A))
-end = time.time()
-print("The time of execution of Binary Search is :",(end-start) * 10**3, "ms")
 
-start = time.time()
-linearSearch(A,len(A),-1)
-end = time.time()
-print("The time of execution of Linear Search is :",(end-start) * 10**3, "ms")
+j = 1
+while j <= 20:
+    while len(A) < MAX*j*10:
+        A.append(i)
+        i+=1
+    start = time.time()
+    linearSearch(A,len(A),-1)
+    end = time.time()
+    #print(MAX*j*10)
+    print(" ")
+    print("Linear Search :",(end-start) * 10**3, "ms")
+    
+    start2 = time.time()
+    binarySearch(A,-1,0,len(A))
+    end2 = time.time()
+    print("Binary Search :",(end2-start2) * 10**3, "ms")
+    j += 1
